@@ -1,1097 +1,1196 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Untuk Agnes 🤍</title>
-  
-  <!-- SEO & Meta Tags -->
-  <meta name="description" content="Pesan khusus dan kenangan manis untuk Agnes.">
-  <meta property="og:title" content="Untuk Agnes 🤍">
-  <meta property="og:description" content="Sebuah hadiah dan ucapan hangat sederhana.">
-  
-  <!-- Google Fonts: Poppins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Canvas Confetti Library for Confetti Animation -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <style>
-    /* ==========================================================================
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Agnes 🤍</title>
+
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Pesan khusus dan kenangan manis untuk Agnes.">
+    <meta property="og:title" content="Untuk Agnes 🤍">
+    <meta property="og:description" content="Sebuah hadiah dan ucapan hangat sederhana.">
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Canvas Confetti Library for Confetti Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* ==========================================================================
        CSS Variables & Design Tokens
        ========================================================================== */
-    :root {
-      --bg-main: #FDF8F8;
-      --bg-card: #FFFFFF;
-      --bg-soft-pink: #FFE4EC;
-      --bg-cream: #FFFDF9;
-      --primary-pink: #F472B6;
-      --primary-pink-hover: #EC4899;
-      --accent-rose: #FB7185;
-      --text-main: #4A3E3D;
-      --text-muted: #7D6E6D;
-      --border-color: #F9E2E7;
-      --shadow-soft: 0 10px 30px rgba(244, 114, 182, 0.08);
-      --shadow-envelope: 0 15px 35px rgba(244, 114, 182, 0.15);
-      --font-poppins: 'Poppins', sans-serif;
-      --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
+        :root {
+            --bg-main: #FDF8F8;
+            --bg-card: #FFFFFF;
+            --bg-soft-pink: #FFE4EC;
+            --bg-cream: #FFFDF9;
+            --primary-pink: #F472B6;
+            --primary-pink-hover: #EC4899;
+            --accent-rose: #FB7185;
+            --text-main: #4A3E3D;
+            --text-muted: #7D6E6D;
+            --border-color: #F9E2E7;
+            --shadow-soft: 0 10px 30px rgba(244, 114, 182, 0.08);
+            --shadow-envelope: 0 15px 35px rgba(244, 114, 182, 0.15);
+            --font-poppins: 'Poppins', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-    /* Reset & Base Styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        /* Reset & Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
 
-    body {
-      font-family: var(--font-poppins);
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+        body {
+            font-family: var(--font-poppins);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* Container Utility */
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-    }
+        /* Container Utility */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
 
-    /* ==========================================================================
+        /* ==========================================================================
        Loading Screen Component
        ========================================================================== */
-    #loading-screen {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, #FDF8F8 0%, #FFE4EC 100%);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #FDF8F8 0%, #FFE4EC 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
 
-    #loading-screen.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
+        #loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-    /* Flower Blooming Animation */
-    .flower-bloom {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      margin-bottom: 24px;
-    }
+        /* Flower Blooming Animation */
+        .flower-bloom {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 24px;
+        }
 
-    .petal {
-      position: absolute;
-      width: 32px;
-      height: 50px;
-      background: linear-gradient(to top, #F472B6, #FFB6C1);
-      border-radius: 50px 50px 0 0;
-      top: 10px;
-      left: 34px;
-      transform-origin: bottom center;
-      opacity: 0;
-      animation: bloom 1.8s ease-in-out forwards;
-    }
+        .petal {
+            position: absolute;
+            width: 32px;
+            height: 50px;
+            background: linear-gradient(to top, #F472B6, #FFB6C1);
+            border-radius: 50px 50px 0 0;
+            top: 10px;
+            left: 34px;
+            transform-origin: bottom center;
+            opacity: 0;
+            animation: bloom 1.8s ease-in-out forwards;
+        }
 
-    .petal:nth-child(1) { transform: rotate(0deg) translateY(-15px); animation-delay: 0.1s; }
-    .petal:nth-child(2) { transform: rotate(60deg) translateY(-15px); animation-delay: 0.2s; }
-    .petal:nth-child(3) { transform: rotate(120deg) translateY(-15px); animation-delay: 0.3s; }
-    .petal:nth-child(4) { transform: rotate(180deg) translateY(-15px); animation-delay: 0.4s; }
-    .petal:nth-child(5) { transform: rotate(240deg) translateY(-15px); animation-delay: 0.5s; }
-    .petal:nth-child(6) { transform: rotate(300deg) translateY(-15px); animation-delay: 0.6s; }
+        .petal:nth-child(1) {
+            transform: rotate(0deg) translateY(-15px);
+            animation-delay: 0.1s;
+        }
 
-    .flower-center {
-      position: absolute;
-      top: 35px;
-      left: 35px;
-      width: 30px;
-      height: 30px;
-      background-color: #FCD34D;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(252, 211, 77, 0.6);
-      z-index: 2;
-      animation: pulseCenter 2s infinite ease-in-out;
-    }
+        .petal:nth-child(2) {
+            transform: rotate(60deg) translateY(-15px);
+            animation-delay: 0.2s;
+        }
 
-    @keyframes bloom {
-      0% {
-        opacity: 0;
-        transform: rotate(var(--rot, 0deg)) scale(0) translateY(0);
-      }
-      70% {
-        opacity: 0.9;
-        transform: rotate(var(--rot, 0deg)) scale(1.1) translateY(-15px);
-      }
-      100% {
-        opacity: 0.85;
-        transform: rotate(var(--rot, 0deg)) scale(1) translateY(-15px);
-      }
-    }
+        .petal:nth-child(3) {
+            transform: rotate(120deg) translateY(-15px);
+            animation-delay: 0.3s;
+        }
 
-    @keyframes pulseCenter {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
+        .petal:nth-child(4) {
+            transform: rotate(180deg) translateY(-15px);
+            animation-delay: 0.4s;
+        }
 
-    .loading-text {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 500;
-      animation: fadeInText 1.5s ease-in-out infinite alternate;
-    }
+        .petal:nth-child(5) {
+            transform: rotate(240deg) translateY(-15px);
+            animation-delay: 0.5s;
+        }
 
-    @keyframes fadeInText {
-      from { opacity: 0.4; }
-      to { opacity: 1; }
-    }
+        .petal:nth-child(6) {
+            transform: rotate(300deg) translateY(-15px);
+            animation-delay: 0.6s;
+        }
 
-    /* Falling Petals Background Canvas */
-    #petals-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 10;
-    }
+        .flower-center {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 30px;
+            height: 30px;
+            background-color: #FCD34D;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(252, 211, 77, 0.6);
+            z-index: 2;
+            animation: pulseCenter 2s infinite ease-in-out;
+        }
 
-    /* ==========================================================================
+        @keyframes bloom {
+            0% {
+                opacity: 0;
+                transform: rotate(var(--rot, 0deg)) scale(0) translateY(0);
+            }
+
+            70% {
+                opacity: 0.9;
+                transform: rotate(var(--rot, 0deg)) scale(1.1) translateY(-15px);
+            }
+
+            100% {
+                opacity: 0.85;
+                transform: rotate(var(--rot, 0deg)) scale(1) translateY(-15px);
+            }
+        }
+
+        @keyframes pulseCenter {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .loading-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            animation: fadeInText 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Falling Petals Background Canvas */
+        #petals-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* ==========================================================================
        General Section Styles & Fade-in Animations
        ========================================================================== */
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 0;
-      position: relative;
-    }
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 0;
+            position: relative;
+        }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* ==========================================================================
+        /* ==========================================================================
        Hero / Landing Page Section
        ========================================================================== */
-    #hero {
-      text-align: center;
-      background: radial-gradient(circle at center, #FFFFFF 0%, var(--bg-main) 70%);
-    }
+        #hero {
+            text-align: center;
+            background: radial-gradient(circle at center, #FFFFFF 0%, var(--bg-main) 70%);
+        }
 
-    .hero-title {
-      font-size: 2.75rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
-    }
+        /* Generic GIF Styling */
+        .section-gif {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            display: block;
+            filter: drop-shadow(0 8px 15px rgba(244, 114, 182, 0.2));
+            transition: transform 0.3s ease;
+        }
 
-    .hero-subtitle {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      font-weight: 300;
-      max-width: 480px;
-    }
+        .section-gif:hover {
+            transform: scale(1.08);
+        }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background-color: var(--bg-soft-pink);
-      color: #9D174D;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-family: var(--font-poppins);
-      font-size: 1rem;
-      font-weight: 500;
-      border: 1px solid rgba(244, 114, 182, 0.3);
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(244, 114, 182, 0.15);
-      transition: var(--transition-smooth);
-      text-decoration: none;
-    }
+        .hero-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
 
-    .btn-primary:hover {
-      background-color: var(--primary-pink);
-      color: #FFFFFF;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(244, 114, 182, 0.3);
-    }
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 480px;
+        }
 
-    .btn-primary:active {
-      transform: translateY(-1px);
-    }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--bg-soft-pink);
+            color: #9D174D;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-family: var(--font-poppins);
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(244, 114, 182, 0.15);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
 
-    /* ==========================================================================
+        .btn-primary:hover {
+            background-color: var(--primary-pink);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(244, 114, 182, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================================
        Section 1: Sedikit Cerita
        ========================================================================== */
-    #story {
-      text-align: center;
-    }
+        #story {
+            text-align: center;
+        }
 
-    .section-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      position: relative;
-      display: inline-block;
-    }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+        }
 
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 3px;
-      background-color: var(--primary-pink);
-      border-radius: 2px;
-    }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-pink);
+            border-radius: 2px;
+        }
 
-    .story-card {
-      background-color: var(--bg-card);
-      padding: 40px 32px;
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-color);
-      margin-bottom: 30px;
-    }
+        .story-card {
+            background-color: var(--bg-card);
+            padding: 40px 32px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
 
-    .story-text {
-      font-size: 1.02rem;
-      color: var(--text-main);
-      margin-bottom: 20px;
-      font-weight: 300;
-    }
+        .story-text {
+            font-size: 1.02rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
 
-    .story-text:last-child {
-      margin-bottom: 0;
-    }
+        .story-text:last-child {
+            margin-bottom: 0;
+        }
 
-    /* Floating Flower Illustration */
-    .flower-illustration {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto;
-      animation: floatGentle 4s ease-in-out infinite alternate;
-    }
+        /* Floating Flower Illustration */
+        .flower-illustration {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            animation: floatGentle 4s ease-in-out infinite alternate;
+        }
 
-    @keyframes floatGentle {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-12px) rotate(5deg); }
-    }
+        @keyframes floatGentle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
 
-    /* ==========================================================================
+            100% {
+                transform: translateY(-12px) rotate(5deg);
+            }
+        }
+
+        /* ==========================================================================
        Section 2: Untuk Agnes (Digital Envelope) — Premium Redesign
        ========================================================================== */
-    #envelope-section {
-      text-align: center;
-    }
+        #envelope-section {
+            text-align: center;
+        }
 
-    /* --- Envelope Container --- */
-    .envelope-scene {
-      perspective: 1200px;
-      width: 320px;
-      margin: 36px auto 0;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
+        /* --- Envelope Container --- */
+        .envelope-scene {
+            perspective: 1200px;
+            width: 320px;
+            margin: 36px auto 0;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
 
-    .envelope-box {
-      position: relative;
-      width: 100%;
-      height: 210px;
-      transform-style: preserve-3d;
-      transition: transform 0.05s ease;
-    }
+        .envelope-box {
+            position: relative;
+            width: 100%;
+            height: 210px;
+            transform-style: preserve-3d;
+            transition: transform 0.05s ease;
+        }
 
-    .envelope-box:hover {
-      transform: scale(1.02) translateY(-3px);
-    }
+        .envelope-box:hover {
+            transform: scale(1.02) translateY(-3px);
+        }
 
-    /* Envelope body (front face) */
-    .env-body {
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      background: linear-gradient(145deg, #FDE8EF 0%, #FBCFE8 60%, #F9A8D4 100%);
-      box-shadow:
-        0 4px 0 #E879A8,
-        0 8px 30px rgba(244, 114, 182, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.5);
-      border: 1.5px solid rgba(244, 114, 182, 0.4);
-      overflow: hidden;
-    }
+        /* Envelope body (front face) */
+        .env-body {
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #FDE8EF 0%, #FBCFE8 60%, #F9A8D4 100%);
+            box-shadow:
+                0 4px 0 #E879A8,
+                0 8px 30px rgba(244, 114, 182, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1.5px solid rgba(244, 114, 182, 0.4);
+            overflow: hidden;
+        }
 
-    /* Bottom-left and bottom-right triangular flaps */
-    .env-bottom-left {
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 0;
-      border-bottom: 110px solid #F472B6;
-      border-right: 160px solid transparent;
-      border-radius: 0 0 0 16px;
-      opacity: 0.55;
-    }
-    .env-bottom-right {
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 0; height: 0;
-      border-bottom: 110px solid #EC4899;
-      border-left: 160px solid transparent;
-      border-radius: 0 0 16px 0;
-      opacity: 0.45;
-    }
+        /* Bottom-left and bottom-right triangular flaps */
+        .env-bottom-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-bottom: 110px solid #F472B6;
+            border-right: 160px solid transparent;
+            border-radius: 0 0 0 16px;
+            opacity: 0.55;
+        }
 
-    /* Decorative diagonal lines on env body */
-    .env-lines {
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent 14px,
-          rgba(255,255,255,0.18) 14px,
-          rgba(255,255,255,0.18) 15px
-        );
-      border-radius: 16px;
-    }
+        .env-bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-bottom: 110px solid #EC4899;
+            border-left: 160px solid transparent;
+            border-radius: 0 0 16px 0;
+            opacity: 0.45;
+        }
 
-    /* Top flap (lid) — 3D flip */
-    .env-flap {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 115px;
-      transform-origin: top center;
-      transform-style: preserve-3d;
-      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 10;
-    }
+        /* Decorative diagonal lines on env body */
+        .env-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(-45deg,
+                    transparent,
+                    transparent 14px,
+                    rgba(255, 255, 255, 0.18) 14px,
+                    rgba(255, 255, 255, 0.18) 15px);
+            border-radius: 16px;
+        }
 
-    .env-flap-front,
-    .env-flap-back {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      clip-path: polygon(0 0, 100% 0, 50% 90%);
-    }
+        /* Top flap (lid) — 3D flip */
+        .env-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 115px;
+            transform-origin: top center;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+        }
 
-    .env-flap-front {
-      background: linear-gradient(160deg, #FDE8EF 0%, #FBCFE8 100%);
-      border-radius: 16px 16px 0 0;
-      box-shadow: inset 0 -4px 8px rgba(244,114,182,0.15);
-    }
+        .env-flap-front,
+        .env-flap-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            clip-path: polygon(0 0, 100% 0, 50% 90%);
+        }
 
-    .env-flap-back {
-      background: linear-gradient(160deg, #FCE7F3 0%, #F9A8D4 100%);
-      transform: rotateY(180deg);
-    }
+        .env-flap-front {
+            background: linear-gradient(160deg, #FDE8EF 0%, #FBCFE8 100%);
+            border-radius: 16px 16px 0 0;
+            box-shadow: inset 0 -4px 8px rgba(244, 114, 182, 0.15);
+        }
 
-    /* Fold crease line at base of flap */
-    .env-crease {
-      position: absolute;
-      top: 100px;
-      left: 0; right: 0;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, rgba(244,114,182,0.45), transparent);
-      z-index: 5;
-    }
+        .env-flap-back {
+            background: linear-gradient(160deg, #FCE7F3 0%, #F9A8D4 100%);
+            transform: rotateY(180deg);
+        }
 
-    /* Wax Seal */
-    .env-seal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 52px;
-      height: 52px;
-      background: radial-gradient(circle at 40% 35%, #F43F5E, #9F1239);
-      border-radius: 50%;
-      color: #fff;
-      font-size: 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 20;
-      box-shadow:
-        0 0 0 3px rgba(244,63,94,0.15),
-        0 0 0 6px rgba(244,63,94,0.08),
-        0 6px 18px rgba(159, 18, 57, 0.4);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: sealPulse 3s ease-in-out infinite;
-    }
+        /* Fold crease line at base of flap */
+        .env-crease {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, rgba(244, 114, 182, 0.45), transparent);
+            z-index: 5;
+        }
 
-    @keyframes sealPulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(244,63,94,0.15), 0 0 0 6px rgba(244,63,94,0.08), 0 6px 18px rgba(159,18,57,0.4); }
-      50% { box-shadow: 0 0 0 5px rgba(244,63,94,0.2), 0 0 0 10px rgba(244,63,94,0.06), 0 8px 22px rgba(159,18,57,0.5); }
-    }
+        /* Wax Seal */
+        .env-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: radial-gradient(circle at 40% 35%, #F43F5E, #9F1239);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            box-shadow:
+                0 0 0 3px rgba(244, 63, 94, 0.15),
+                0 0 0 6px rgba(244, 63, 94, 0.08),
+                0 6px 18px rgba(159, 18, 57, 0.4);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: sealPulse 3s ease-in-out infinite;
+        }
 
-    /* Envelope OPEN state */
-    .envelope-scene.open .env-flap {
-      transform: rotateX(-180deg);
-    }
+        @keyframes sealPulse {
 
-    .envelope-scene.open .env-seal {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.4);
-      pointer-events: none;
-      animation: none;
-    }
+            0%,
+            100% {
+                box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15), 0 0 0 6px rgba(244, 63, 94, 0.08), 0 6px 18px rgba(159, 18, 57, 0.4);
+            }
 
-    /* Hint text below envelope */
-    .envelope-hint {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 18px;
-      font-style: italic;
-      letter-spacing: 0.3px;
-      transition: opacity 0.5s ease;
-    }
+            50% {
+                box-shadow: 0 0 0 5px rgba(244, 63, 94, 0.2), 0 0 0 10px rgba(244, 63, 94, 0.06), 0 8px 22px rgba(159, 18, 57, 0.5);
+            }
+        }
 
-    .envelope-scene.open + .envelope-hint {
-      opacity: 0;
-      pointer-events: none;
-    }
+        /* Envelope OPEN state */
+        .envelope-scene.open .env-flap {
+            transform: rotateX(-180deg);
+        }
 
-    /* --- Letter / Surat --- */
-    .letter-outer {
-      max-width: 440px;
-      margin: 28px auto 0;
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s;
-    }
+        .envelope-scene.open .env-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.4);
+            pointer-events: none;
+            animation: none;
+        }
 
-    .envelope-scene.open ~ .letter-outer {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+        /* Hint text below envelope */
+        .envelope-hint {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 18px;
+            font-style: italic;
+            letter-spacing: 0.3px;
+            transition: opacity 0.5s ease;
+        }
 
-    .letter-paper {
-      background: linear-gradient(160deg, #FFFEF9 0%, #FFF9F5 100%);
-      border-radius: 16px;
-      border: 1.5px solid rgba(244, 114, 182, 0.15);
-      box-shadow:
-        0 4px 24px rgba(244, 114, 182, 0.1),
-        0 1px 4px rgba(0,0,0,0.04),
-        inset 0 1px 0 rgba(255,255,255,0.8);
-      overflow: hidden;
-      position: relative;
-    }
+        .envelope-scene.open+.envelope-hint {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-    /* Letterhead top bar */
-    .letter-header {
-      background: linear-gradient(120deg, #FDE8EF, #FFE4EC);
-      padding: 20px 28px 16px;
-      border-bottom: 1.5px solid rgba(244,114,182,0.15);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        /* --- Letter / Surat --- */
+        .letter-outer {
+            max-width: 440px;
+            margin: 28px auto 0;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s;
+        }
 
-    .letter-header-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #F472B6, #EC4899);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      box-shadow: 0 3px 8px rgba(236,72,153,0.3);
-    }
+        .envelope-scene.open~.letter-outer {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
 
-    .letter-header-text {
-      text-align: left;
-    }
+        .letter-paper {
+            background: linear-gradient(160deg, #FFFEF9 0%, #FFF9F5 100%);
+            border-radius: 16px;
+            border: 1.5px solid rgba(244, 114, 182, 0.15);
+            box-shadow:
+                0 4px 24px rgba(244, 114, 182, 0.1),
+                0 1px 4px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            position: relative;
+        }
 
-    .letter-header-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #BE185D;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-    }
+        /* Letterhead top bar */
+        .letter-header {
+            background: linear-gradient(120deg, #FDE8EF, #FFE4EC);
+            padding: 20px 28px 16px;
+            border-bottom: 1.5px solid rgba(244, 114, 182, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .letter-header-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
+        .letter-header-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #F472B6, #EC4899);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.3);
+        }
 
-    /* Letter body */
-    .letter-body {
-      padding: 28px 28px 24px;
-      position: relative;
-    }
+        .letter-header-text {
+            text-align: left;
+        }
 
-    /* Decorative flower watermark */
-    .letter-watermark {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      opacity: 0.07;
-      pointer-events: none;
-    }
+        .letter-header-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #BE185D;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
 
-    /* Horizontal lines like real letter paper */
-    .letter-lines {
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        to bottom,
-        transparent,
-        transparent 31px,
-        rgba(244,114,182,0.07) 31px,
-        rgba(244,114,182,0.07) 32px
-      );
-      border-radius: 0 0 16px 16px;
-    }
+        .letter-header-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
 
-    .letter-text {
-      position: relative;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      line-height: 1.9;
-      font-weight: 300;
-      white-space: pre-line;
-      z-index: 1;
-    }
+        /* Letter body */
+        .letter-body {
+            padding: 28px 28px 24px;
+            position: relative;
+        }
 
-    /* Footer of letter */
-    .letter-footer {
-      padding: 16px 28px 24px;
-      border-top: 1.5px solid rgba(244,114,182,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        /* Decorative flower watermark */
+        .letter-watermark {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            opacity: 0.07;
+            pointer-events: none;
+        }
 
-    .letter-stamp {
-      width: 44px;
-      height: 54px;
-      border: 2px solid rgba(244,114,182,0.3);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      background: linear-gradient(145deg, #FFF0F5, #FFE4EC);
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
-    }
+        /* Horizontal lines like real letter paper */
+        .letter-lines {
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(to bottom,
+                    transparent,
+                    transparent 31px,
+                    rgba(244, 114, 182, 0.07) 31px,
+                    rgba(244, 114, 182, 0.07) 32px);
+            border-radius: 0 0 16px 16px;
+        }
 
-    .letter-signature {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #9D174D;
-      font-style: italic;
-      text-align: right;
-    }
+        .letter-text {
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.9;
+            font-weight: 300;
+            white-space: pre-line;
+            z-index: 1;
+        }
 
-    .letter-signature-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      font-style: normal;
-      margin-bottom: 2px;
-    }
+        /* Footer of letter */
+        .letter-footer {
+            padding: 16px 28px 24px;
+            border-top: 1.5px solid rgba(244, 114, 182, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    /* ==========================================================================
+        .letter-stamp {
+            width: 44px;
+            height: 54px;
+            border: 2px solid rgba(244, 114, 182, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            background: linear-gradient(145deg, #FFF0F5, #FFE4EC);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .letter-signature {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #9D174D;
+            font-style: italic;
+            text-align: right;
+        }
+
+        .letter-signature-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            font-style: normal;
+            margin-bottom: 2px;
+        }
+
+        /* ==========================================================================
        Final Section: Closing & Confetti
        ========================================================================== */
-    #final-section {
-      background: linear-gradient(180deg, var(--bg-main) 0%, #FFF0F5 100%);
-      text-align: center;
-      border-top: 1px solid var(--border-color);
-    }
+        #final-section {
+            background: linear-gradient(180deg, var(--bg-main) 0%, #FFF0F5 100%);
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
 
-    .final-title {
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 16px;
-    }
+        .final-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
 
-    .final-subtitle {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      max-width: 460px;
-      margin: 0 auto;
-    }
+        .final-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 460px;
+            margin: 0 auto;
+        }
 
-    /* Footer Styling */
-    footer {
-      position: absolute;
-      bottom: 24px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+        /* Footer Styling */
+        footer {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
 
-    /* ==========================================================================
+        /* ==========================================================================
        Floating Music Player Button
        ========================================================================== */
-    .music-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: var(--transition-smooth);
-      color: #9D174D;
-      outline: none;
-    }
+        .music-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            color: #9D174D;
+            outline: none;
+        }
 
-    .music-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 8px 25px rgba(244, 114, 182, 0.25);
-    }
+        .music-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(244, 114, 182, 0.25);
+        }
 
-    .music-btn svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
+        .music-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
 
-    .music-btn.playing {
-      animation: pulseMusic 2s infinite ease-in-out;
-      background-color: var(--bg-soft-pink);
-    }
+        .music-btn.playing {
+            animation: pulseMusic 2s infinite ease-in-out;
+            background-color: var(--bg-soft-pink);
+        }
 
-    @keyframes pulseMusic {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.4); }
-      50% { box-shadow: 0 0 0 12px rgba(244, 114, 182, 0); }
-    }
+        @keyframes pulseMusic {
 
-    /* Responsive Adjustments */
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .section-title {
-        font-size: 1.75rem;
-      }
-      .final-title {
-        font-size: 1.8rem;
-      }
-      .story-card {
-        padding: 30px 20px;
-      }
-    }
-  </style>
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 12px rgba(244, 114, 182, 0);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .final-title {
+                font-size: 1.8rem;
+            }
+
+            .story-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Background Falling Petals Canvas -->
-  <canvas id="petals-canvas"></canvas>
+    <!-- Background Falling Petals Canvas -->
+    <canvas id="petals-canvas"></canvas>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        Loading Screen
        ========================================================================== -->
-  <div id="loading-screen">
-    <div class="flower-bloom">
-      <div class="petal" style="--rot: 0deg;"></div>
-      <div class="petal" style="--rot: 60deg;"></div>
-      <div class="petal" style="--rot: 120deg;"></div>
-      <div class="petal" style="--rot: 180deg;"></div>
-      <div class="petal" style="--rot: 240deg;"></div>
-      <div class="petal" style="--rot: 300deg;"></div>
-      <div class="flower-center"></div>
+    <div id="loading-screen">
+        <div class="flower-bloom">
+            <div class="petal" style="--rot: 0deg;"></div>
+            <div class="petal" style="--rot: 60deg;"></div>
+            <div class="petal" style="--rot: 120deg;"></div>
+            <div class="petal" style="--rot: 180deg;"></div>
+            <div class="petal" style="--rot: 240deg;"></div>
+            <div class="petal" style="--rot: 300deg;"></div>
+            <div class="flower-center"></div>
+        </div>
+        <div class="loading-text">Membuka Hadiah...</div>
     </div>
-    <div class="loading-text">Membuka Hadiah...</div>
-  </div>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        Landing Page / Hero Section
        ========================================================================== -->
-  <section id="hero">
-    <div class="container reveal">
-      <h1 class="hero-title" id="text-hero-title">Hai, Agnes 👋</h1>
-      <p class="hero-subtitle" id="text-hero-subtitle">Terima kasih sudah meluangkan waktu untuk membuka hadiah ini.</p>
-      <button class="btn-primary" onclick="scrollToSection('story')">
-        <span id="text-hero-button">Buka Pesan</span> 🌸
-      </button>
-    </div>
-  </section>
+    <section id="hero">
+        <div class="container reveal">
+            <img src="assets/gif/mochi-hallo.gif" alt="Mochi Hallo" class="section-gif">
+            <h1 class="hero-title" id="text-hero-title">Hai, Agnes 👋</h1>
+            <p class="hero-subtitle" id="text-hero-subtitle">Terima kasih sudah meluangkan waktu untuk membuka hadiah
+                ini.</p>
+            <button class="btn-primary" onclick="scrollToSection('story')">
+                <span id="text-hero-button">Buka Pesan</span> 🌸
+            </button>
+        </div>
+    </section>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        Section 1: Sedikit Cerita
        ========================================================================== -->
-  <section id="story">
-    <div class="container reveal">
-      <h2 class="section-title" id="text-story-title">Sedikit Cerita</h2>
-      
-      <div class="story-card">
-        <p class="story-text" id="text-story-p1">Aku bukan orang yang paling jago memilih hadiah.</p>
-        <p class="story-text" id="text-story-p2">Tapi aku memilih beberapa hal sederhana yang semoga bisa membuat harimu sedikit lebih menyenangkan.</p>
-        <p class="story-text" id="text-story-p3">Semoga apa yang ada di dalam kotak tadi bisa menjadi kenangan kecil yang manis.</p>
-      </div>
+    <section id="story">
+        <div class="container reveal">
+            <h2 class="section-title" id="text-story-title">Sedikit Cerita</h2>
 
-      <!-- Animated Flower Illustration -->
-      <div class="flower-illustration">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="16" fill="#FCD34D"/>
-          <path d="M50 18C44 28 44 38 50 34C56 38 56 28 50 18Z" fill="#F472B6" opacity="0.9"/>
-          <path d="M50 82C44 72 44 62 50 66C56 62 56 72 50 82Z" fill="#F472B6" opacity="0.9"/>
-          <path d="M18 50C28 44 38 44 34 50C38 56 28 56 18 50Z" fill="#F472B6" opacity="0.9"/>
-          <path d="M82 50C72 44 62 44 66 50C62 56 72 56 82 50Z" fill="#F472B6" opacity="0.9"/>
-          <path d="M27 27C37 32 43 40 40 40C40 40 32 37 27 27Z" fill="#FFB6C1"/>
-          <path d="M73 73C63 68 57 60 60 60C60 60 68 63 73 73Z" fill="#FFB6C1"/>
-          <path d="M73 27C63 32 57 40 60 40C60 40 68 37 73 27Z" fill="#FFB6C1"/>
-          <path d="M27 73C37 68 43 60 40 60C40 60 32 63 27 73Z" fill="#FFB6C1"/>
-        </svg>
-      </div>
-    </div>
-  </section>
+            <div class="story-card">
+                <img src="assets/gif/mochi-sad.gif" alt="Mochi Sad" class="section-gif"
+                    style="width: 110px; height: 110px; margin-bottom: 16px;">
+                <p class="story-text" id="text-story-p1">Aku bukan orang yang paling jago memilih hadiah.</p>
+                <p class="story-text" id="text-story-p2">Tapi aku memilih beberapa hal sederhana yang semoga bisa
+                    membuat harimu sedikit lebih menyenangkan.</p>
+                <p class="story-text" id="text-story-p3">Semoga apa yang ada di dalam kotak tadi bisa menjadi kenangan
+                    kecil yang manis.</p>
+            </div>
 
-  <!-- ==========================================================================
+            <!-- Animated Flower Illustration -->
+            <div class="flower-illustration">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="16" fill="#FCD34D" />
+                    <path d="M50 18C44 28 44 38 50 34C56 38 56 28 50 18Z" fill="#F472B6" opacity="0.9" />
+                    <path d="M50 82C44 72 44 62 50 66C56 62 56 72 50 82Z" fill="#F472B6" opacity="0.9" />
+                    <path d="M18 50C28 44 38 44 34 50C38 56 28 56 18 50Z" fill="#F472B6" opacity="0.9" />
+                    <path d="M82 50C72 44 62 44 66 50C62 56 72 56 82 50Z" fill="#F472B6" opacity="0.9" />
+                    <path d="M27 27C37 32 43 40 40 40C40 40 32 37 27 27Z" fill="#FFB6C1" />
+                    <path d="M73 73C63 68 57 60 60 60C60 60 68 63 73 73Z" fill="#FFB6C1" />
+                    <path d="M73 27C63 32 57 40 60 40C60 40 68 37 73 27Z" fill="#FFB6C1" />
+                    <path d="M27 73C37 68 43 60 40 60C40 60 32 63 27 73Z" fill="#FFB6C1" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
        Section 2: Untuk Agnes (Amplop Digital)
        ========================================================================== -->
-  <section id="envelope-section">
-    <div class="container reveal">
-      <h2 class="section-title" id="text-envelope-title">Untuk Agnes</h2>
+    <section id="envelope-section">
+        <div class="container reveal">
+            <h2 class="section-title" id="text-envelope-title">Untuk Agnes</h2>
 
-      <!-- Premium Envelope -->
-      <div class="envelope-scene" id="envelope-scene" onclick="toggleEnvelope()">
-        <div class="envelope-box">
-          <!-- Envelope body -->
-          <div class="env-body">
-            <div class="env-lines"></div>
-            <div class="env-bottom-left"></div>
-            <div class="env-bottom-right"></div>
-          </div>
+            <!-- Premium Envelope -->
+            <div class="envelope-scene" id="envelope-scene" onclick="toggleEnvelope()">
+                <div class="envelope-box">
+                    <!-- Envelope body -->
+                    <div class="env-body">
+                        <div class="env-lines"></div>
+                        <div class="env-bottom-left"></div>
+                        <div class="env-bottom-right"></div>
+                    </div>
 
-          <!-- Fold crease -->
-          <div class="env-crease"></div>
+                    <!-- Fold crease -->
+                    <div class="env-crease"></div>
 
-          <!-- Flap (3D flip lid) -->
-          <div class="env-flap">
-            <div class="env-flap-front"></div>
-            <div class="env-flap-back"></div>
-          </div>
+                    <!-- Flap (3D flip lid) -->
+                    <div class="env-flap">
+                        <div class="env-flap-front"></div>
+                        <div class="env-flap-back"></div>
+                    </div>
 
-          <!-- Wax Seal -->
-          <div class="env-seal">💌</div>
-        </div>
-      </div>
-
-      <p class="envelope-hint" id="envelope-hint-text">Sentuh amplop untuk membukanya ✨</p>
-
-      <!-- Letter / Surat (appears after envelope opens) -->
-      <div class="letter-outer" id="letter-outer">
-        <div class="letter-paper">
-          <!-- Letter head -->
-          <div class="letter-header">
-            
-          </div>
-
-          <!-- Letter body -->
-          <div class="letter-body">
-            <div class="letter-lines"></div>
-            <!-- Watermark bunga -->
-            <svg class="letter-watermark" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="16" fill="#F472B6"/>
-              <path d="M50 18C44 28 44 38 50 34C56 38 56 28 50 18Z" fill="#F472B6"/>
-              <path d="M50 82C44 72 44 62 50 66C56 62 56 72 50 82Z" fill="#F472B6"/>
-              <path d="M18 50C28 44 38 44 34 50C38 56 28 56 18 50Z" fill="#F472B6"/>
-              <path d="M82 50C72 44 62 44 66 50C62 56 72 56 82 50Z" fill="#F472B6"/>
-            </svg>
-            <div class="letter-text" id="text-letter-body">Halo Agnes,
-
-Terima kasih sudah meluangkan waktu untuk membuka hadiah sederhana ini.
-
-Aku harap semua isi di dalam kotak tadi bisa membuatmu tersenyum.
-
-Tidak perlu merasa harus membalas apa pun.
-
-Aku hanya ingin memberikan sesuatu yang semoga bisa menjadi kenangan yang menyenangkan.
-
-Semoga kamu selalu sehat, bahagia, dimudahkan semua urusannya, dan segala hal yang sedang kamu perjuangkan bisa tercapai.
-
-Terima kasih sudah membaca sampai akhir.</div>
-          </div>
-
-          <!-- Letter footer -->
-          <div class="letter-footer">
-            <div class="letter-stamp"></div>
-            <div class="letter-signature" id="text-letter-signature">
-              — Ridho
+                    <!-- Wax Seal -->
+                    <div class="env-seal">💌</div>
+                </div>
             </div>
-          </div>
+
+            <p class="envelope-hint" id="envelope-hint-text">Sentuh amplop untuk membukanya ✨</p>
+
+            <!-- Letter / Surat (appears after envelope opens) -->
+            <div class="letter-outer" id="letter-outer">
+                <div class="letter-paper">
+                    <!-- Letter head -->
+                    <div class="letter-header">
+
+                    </div>
+
+                    <!-- Letter body -->
+                    <div class="letter-body">
+                        <div class="letter-lines"></div>
+                        <!-- Watermark bunga -->
+                        <svg class="letter-watermark" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="50" r="16" fill="#F472B6" />
+                            <path d="M50 18C44 28 44 38 50 34C56 38 56 28 50 18Z" fill="#F472B6" />
+                            <path d="M50 82C44 72 44 62 50 66C56 62 56 72 50 82Z" fill="#F472B6" />
+                            <path d="M18 50C28 44 38 44 34 50C38 56 28 56 18 50Z" fill="#F472B6" />
+                            <path d="M82 50C72 44 62 44 66 50C62 56 72 56 82 50Z" fill="#F472B6" />
+                        </svg>
+                        <div class="letter-text" id="text-letter-body">Halo Agnes,
+
+                            Terima kasih sudah meluangkan waktu untuk membuka hadiah sederhana ini.
+
+                            Aku harap semua isi di dalam kotak tadi bisa membuatmu tersenyum.
+
+                            Tidak perlu merasa harus membalas apa pun.
+
+                            Aku hanya ingin memberikan sesuatu yang semoga bisa menjadi kenangan yang menyenangkan.
+
+                            Semoga kamu selalu sehat, bahagia, dimudahkan semua urusannya, dan segala hal yang sedang
+                            kamu perjuangkan bisa tercapai.
+
+                            Terima kasih sudah membaca sampai akhir.</div>
+                    </div>
+
+                    <!-- Letter footer -->
+                    <div class="letter-footer">
+                        <div class="letter-stamp" style="border: none; background: transparent; box-shadow: none;">
+                            <img src="assets/gif/mochi-love.gif" alt="Mochi Love"
+                                style="width: 48px; height: 48px; object-fit: contain;">
+                        </div>
+                        <div class="letter-signature" id="text-letter-signature">
+                            — Ridho
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        Section Terakhir: Closing & Confetti
        ========================================================================== -->
-  <section id="final-section">
-    <div class="container reveal">
-      <h2 class="final-title" id="text-final-title">Terima kasih sudah sampai di sini 🤍</h2>
-      <p class="final-subtitle" id="text-final-subtitle">Semoga hadiah kecil ini bisa membuat harimu sedikit lebih menyenangkan.</p>
-    </div>
+    <section id="final-section">
+        <div class="container reveal">
+            <img src="assets/gif/mochi-laugh.gif" alt="Mochi Laugh" class="section-gif"
+                style="width: 140px; height: 140px; margin-bottom: 16px;">
+            <h2 class="final-title" id="text-final-title">Terima kasih sudah sampai di sini</h2>
+            <p class="final-subtitle" id="text-final-subtitle">Semoga hadiah kecil ini bisa membuat harimu sedikit lebih
+                menyenangkan.</p>
+        </div>
 
-    <footer>
-      <p id="text-footer">Made with ❤️ by Ridho</p>
-    </footer>
-  </section>
+        <footer>
+            <p id="text-footer">Made with ❤️ by Ridho</p>
+        </footer>
+    </section>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        Floating Music Player & Audio Element
        ========================================================================== -->
-  <!-- Music audio (Relatively loaded or background ambient sound) -->
-  <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-100-bpm-121529.mp3" type="audio/mpeg">
-  </audio>
+    <!-- Music audio (Relatively loaded or background ambient sound) -->
+    <audio id="bg-music" loop>
+        <source
+            src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-100-bpm-121529.mp3"
+            type="audio/mpeg">
+    </audio>
 
-  <button class="music-btn" id="music-btn" onclick="toggleMusic()" aria-label="Toggle Music">
-    <!-- Play Icon SVG -->
-    <svg id="play-icon" viewBox="0 0 24 24">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    <!-- Pause Icon SVG (hidden initially) -->
-    <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;">
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-    </svg>
-  </button>
+    <button class="music-btn" id="music-btn" onclick="toggleMusic()" aria-label="Toggle Music">
+        <!-- Play Icon SVG -->
+        <svg id="play-icon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+        </svg>
+        <!-- Pause Icon SVG (hidden initially) -->
+        <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+        </svg>
+    </button>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        JavaScript Logic
        ========================================================================== -->
-  <script>
-    /* --------------------------------------------------------------------------
-       1. Loading Screen Logic
-       -------------------------------------------------------------------------- */
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.classList.add('fade-out');
-      }, 2000);
-    });
-
-    /* --------------------------------------------------------------------------
-       2. Smooth Scroll Navigation
-       -------------------------------------------------------------------------- */
-    function scrollToSection(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    /* --------------------------------------------------------------------------
-       3. Envelope Toggle Logic
-       -------------------------------------------------------------------------- */
-    function toggleEnvelope() {
-      const scene = document.getElementById('envelope-scene');
-      const hint  = document.getElementById('envelope-hint-text');
-      scene.classList.toggle('open');
-      if (scene.classList.contains('open')) {
-        if (hint) { hint.style.opacity = '0'; hint.style.pointerEvents = 'none'; }
-      } else {
-        if (hint) { hint.style.opacity = '1'; hint.style.pointerEvents = 'auto'; }
-      }
-    }
-
-
-    /* --------------------------------------------------------------------------
-       4. Music Player Toggle Logic
-       -------------------------------------------------------------------------- */
-    const audio = document.getElementById('bg-music');
-    const musicBtn = document.getElementById('music-btn');
-    const playIcon = document.getElementById('play-icon');
-    const pauseIcon = document.getElementById('pause-icon');
-
-    function toggleMusic() {
-      if (audio.paused) {
-        audio.play().then(() => {
-          musicBtn.classList.add('playing');
-          playIcon.style.display = 'none';
-          pauseIcon.style.display = 'block';
-        }).catch(err => {
-          console.log("Audio play error: ", err);
+    <script>
+        /* --------------------------------------------------------------------------
+           1. Loading Screen Logic
+           -------------------------------------------------------------------------- */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.classList.add('fade-out');
+            }, 2000);
         });
-      } else {
-        audio.pause();
-        musicBtn.classList.remove('playing');
-        playIcon.style.display = 'block';
-        pauseIcon.style.display = 'none';
-      }
-    }
 
-    /* --------------------------------------------------------------------------
-       5. Scroll Animation & Confetti Trigger
-       -------------------------------------------------------------------------- */
-    let confettiTriggered = false;
-
-    function handleScrollAnimations() {
-      const reveals = document.querySelectorAll('.reveal');
-      const windowHeight = window.innerHeight;
-
-      reveals.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 120;
-
-        if (elementTop < windowHeight - elementVisible) {
-          element.classList.add('active');
+        /* --------------------------------------------------------------------------
+           2. Smooth Scroll Navigation
+           -------------------------------------------------------------------------- */
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
-      });
 
-      // Confetti trigger when Final Section comes into view
-      const finalSection = document.getElementById('final-section');
-      if (finalSection) {
-        const rect = finalSection.getBoundingClientRect();
-        if (rect.top <= windowHeight * 0.75 && !confettiTriggered) {
-          confettiTriggered = true;
-          triggerSoftConfetti();
+        /* --------------------------------------------------------------------------
+           3. Envelope Toggle Logic
+           -------------------------------------------------------------------------- */
+        function toggleEnvelope() {
+            const scene = document.getElementById('envelope-scene');
+            const hint = document.getElementById('envelope-hint-text');
+            scene.classList.toggle('open');
+            if (scene.classList.contains('open')) {
+                if (hint) { hint.style.opacity = '0'; hint.style.pointerEvents = 'none'; }
+            } else {
+                if (hint) { hint.style.opacity = '1'; hint.style.pointerEvents = 'auto'; }
+            }
         }
-      }
-    }
 
-    window.addEventListener('scroll', handleScrollAnimations);
-    // Initial check on load
-    handleScrollAnimations();
 
-    function triggerSoftConfetti() {
-      if (typeof confetti === 'function') {
-        // Soft pastel colored confetti
-        const colors = ['#FFE4EC', '#F472B6', '#FCD34D', '#F9A8D4', '#FFFFFF'];
-        
-        confetti({
-          particleCount: 45,
-          spread: 70,
-          origin: { y: 0.7 },
-          colors: colors,
-          disableForReducedMotion: true
+        /* --------------------------------------------------------------------------
+           4. Music Player Toggle Logic
+           -------------------------------------------------------------------------- */
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }).catch(err => {
+                    console.log("Audio play error: ", err);
+                });
+            } else {
+                audio.pause();
+                musicBtn.classList.remove('playing');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        /* --------------------------------------------------------------------------
+           5. Scroll Animation & Confetti Trigger
+           -------------------------------------------------------------------------- */
+        let confettiTriggered = false;
+
+        function handleScrollAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 120;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+
+            // Confetti trigger when Final Section comes into view
+            const finalSection = document.getElementById('final-section');
+            if (finalSection) {
+                const rect = finalSection.getBoundingClientRect();
+                if (rect.top <= windowHeight * 0.75 && !confettiTriggered) {
+                    confettiTriggered = true;
+                    triggerSoftConfetti();
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScrollAnimations);
+        // Initial check on load
+        handleScrollAnimations();
+
+        function triggerSoftConfetti() {
+            if (typeof confetti === 'function') {
+                // Soft pastel colored confetti
+                const colors = ['#FFE4EC', '#F472B6', '#FCD34D', '#F9A8D4', '#FFFFFF'];
+
+                confetti({
+                    particleCount: 45,
+                    spread: 70,
+                    origin: { y: 0.7 },
+                    colors: colors,
+                    disableForReducedMotion: true
+                });
+            }
+        }
+
+        /* --------------------------------------------------------------------------
+           6. Soft Petals Falling Canvas Background
+           -------------------------------------------------------------------------- */
+        const canvas = document.getElementById('petals-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         });
-      }
-    }
 
-    /* --------------------------------------------------------------------------
-       6. Soft Petals Falling Canvas Background
-       -------------------------------------------------------------------------- */
-    const canvas = document.getElementById('petals-canvas');
-    const ctx = canvas.getContext('2d');
+        class Petal {
+            constructor() {
+                this.reset();
+            }
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * -height;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 0.8 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.3;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = (Math.random() - 0.5) * 1.5;
+            }
 
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.01) + this.speedX;
+                this.rotation += this.rotationSpeed;
 
-    class Petal {
-      constructor() {
-        this.reset();
-      }
+                if (this.y > height + 20) {
+                    this.reset();
+                    this.y = -10;
+                }
+            }
 
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * -height;
-        this.size = Math.random() * 8 + 6;
-        this.speedY = Math.random() * 0.8 + 0.5;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.opacity = Math.random() * 0.5 + 0.3;
-        this.rotation = Math.random() * 360;
-        this.rotationSpeed = (Math.random() - 0.5) * 1.5;
-      }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#F472B6';
 
-      update() {
-        this.y += this.speedY;
-        this.x += Math.sin(this.y * 0.01) + this.speedX;
-        this.rotation += this.rotationSpeed;
-
-        if (this.y > height + 20) {
-          this.reset();
-          this.y = -10;
+                // Draw simple petal shape
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size * 1.5);
+                ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
+                ctx.fill();
+                ctx.restore();
+            }
         }
-      }
 
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate((this.rotation * Math.PI) / 180);
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = '#F472B6';
+        const petals = Array.from({ length: 25 }, () => new Petal());
 
-        // Draw simple petal shape
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size * 1.5);
-        ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
+        function animatePetals() {
+            ctx.clearRect(0, 0, width, height);
+            petals.forEach(petal => {
+                petal.update();
+                petal.draw();
+            });
+            requestAnimationFrame(animatePetals);
+        }
 
-    const petals = Array.from({ length: 25 }, () => new Petal());
-
-    function animatePetals() {
-      ctx.clearRect(0, 0, width, height);
-      petals.forEach(petal => {
-        petal.update();
-        petal.draw();
-      });
-      requestAnimationFrame(animatePetals);
-    }
-
-    animatePetals();
-  </script>
+        animatePetals();
+    </script>
 </body>
+
 </html>
