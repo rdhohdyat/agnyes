@@ -524,6 +524,8 @@
             animation: sealPulse 3s ease-in-out infinite;
         }
 
+
+
         @keyframes sealPulse {
 
             0%,
@@ -795,6 +797,59 @@
             }
         }
 
+        /* Prank Gift Section */
+        .prank-wrapper {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px dashed rgba(244, 114, 182, 0.3);
+            text-align: center;
+            position: relative;
+            min-height: 180px;
+        }
+
+        .prank-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .prank-btn {
+            position: relative;
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+            z-index: 100;
+        }
+
+        .prank-result {
+            display: none;
+            margin-top: 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .prank-result.active {
+            display: block;
+        }
+
+        .prank-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #BE185D;
+            margin-bottom: 16px;
+        }
+
+        .prank-img {
+            max-width: 260px;
+            width: 80%;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(244, 114, 182, 0.25);
+            border: 3px solid #FFFFFF;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 480px) {
             .hero-title {
@@ -840,12 +895,14 @@
     <!-- ==========================================================================
        Landing Page / Hero Section
        ========================================================================== -->
+    <!-- ==========================================================================
+       Landing Page / Hero Section
+       ========================================================================== -->
     <section id="hero">
         <div class="container reveal">
             <img src="assets/gif/mochi-hallo.gif" alt="Mochi Hallo" class="section-gif">
             <h1 class="hero-title" id="text-hero-title">Hai, Agnes 👋</h1>
-            <p class="hero-subtitle" id="text-hero-subtitle">Terima kasih sudah meluangkan waktu untuk membuka hadiah
-                ini.</p>
+            <p class="hero-subtitle" id="text-hero-subtitle">Makasih ya udah sempetin waktu buat buka hadiah ini.</p>
             <button class="btn-primary" onclick="scrollToSection('story')">
                 <span id="text-hero-button">Buka Pesan</span> 🌸
             </button>
@@ -862,11 +919,9 @@
             <div class="story-card">
                 <img src="assets/gif/mochi-sad.gif" alt="Mochi Sad" class="section-gif"
                     style="width: 110px; height: 110px; margin-bottom: 16px;">
-                <p class="story-text" id="text-story-p1">Aku bukan orang yang paling jago memilih hadiah.</p>
-                <p class="story-text" id="text-story-p2">Tapi aku memilih beberapa hal sederhana yang semoga bisa
-                    membuat harimu sedikit lebih menyenangkan.</p>
-                <p class="story-text" id="text-story-p3">Semoga apa yang ada di dalam kotak tadi bisa menjadi kenangan
-                    kecil yang manis.</p>
+                <p class="story-text" id="text-story-p1">Jujur, aku emang bukan orang yang paling jago milih hadiah 😅.</p>
+                <p class="story-text" id="text-story-p2">Kamu pernah cerita kalau kamu ultah di bulan Agustus ini, tapi aku nggak tahu pasti tanggalnya kapan. Daripada takut kelewatan momennya, aku pilihin beberapa hal sederhana ini lebih awal.</p>
+                <p class="story-text" id="text-story-p3">Semoga apa yang ada di dalam kotak tadi bisa bikin harimu sedikit lebih seneng dan jadi kenangan kecil yang manis ya.</p>
             </div>
 
             <!-- Animated Flower Illustration -->
@@ -917,7 +972,7 @@
                 </div>
             </div>
 
-            <p class="envelope-hint" id="envelope-hint-text">Sentuh amplop untuk membukanya ✨</p>
+            <p class="envelope-hint" id="envelope-hint-text">Klik amplopnya buat buka ya ✨</p>
 
             <!-- Letter / Surat (appears after envelope opens) -->
             <div class="letter-outer" id="letter-outer">
@@ -940,18 +995,17 @@
                         </svg>
                         <div class="letter-text" id="text-letter-body">Halo Agnes,
 
-                            Terima kasih sudah meluangkan waktu untuk membuka hadiah sederhana ini.
+Makasih banyak ya udah sempetin waktu buat buka hadiah sederhana ini.
 
-                            Aku harap semua isi di dalam kotak tadi bisa membuatmu tersenyum.
+Aku harap semua isi di dalam kotak tadi bisa bikin kamu senang.
 
-                            Tidak perlu merasa harus membalas apa pun.
+Nggak perlu ngerasa harus membalas apa pun kok.
 
-                            Aku hanya ingin memberikan sesuatu yang semoga bisa menjadi kenangan yang menyenangkan.
+Aku cuma pengen ngasih sesuatu yang semoga bisa jadi kenangan yang menyenangkan buat kamu.
 
-                            Semoga kamu selalu sehat, bahagia, dimudahkan semua urusannya, dan segala hal yang sedang
-                            kamu perjuangkan bisa tercapai.
+Semoga kamu sehat selalu, makin bahagia, dimudahkan semua urusannya, dan segala hal yang lagi kamu perjuangkan bisa tercapai ya.
 
-                            Terima kasih sudah membaca sampai akhir.</div>
+Makasih udah baca sampai akhir.</div>
                     </div>
 
                     <!-- Letter footer -->
@@ -977,13 +1031,25 @@
         <div class="container reveal">
             <img src="assets/gif/mochi-laugh.gif" alt="Mochi Laugh" class="section-gif"
                 style="width: 140px; height: 140px; margin-bottom: 16px;">
-            <h2 class="final-title" id="text-final-title">Terima kasih sudah sampai di sini</h2>
-            <p class="final-subtitle" id="text-final-subtitle">Semoga hadiah kecil ini bisa membuat harimu sedikit lebih
-                menyenangkan.</p>
+            <h2 class="final-title" id="text-final-title">Makasih ya udah baca sampai sini</h2>
+            <p class="final-subtitle" id="text-final-subtitle">Semoga hadiah kecil ini bisa bikin harimu sedikit lebih berwarna.</p>
+
+            <!-- Prank Gift Section -->
+            <div class="prank-wrapper" id="prank-wrapper">
+                <p class="prank-title">Masih ada hadiah terakhir...</p>
+                <button class="btn-primary prank-btn" id="prank-btn" onclick="handlePrankClick()">
+                    🎁 Klik untuk membuka
+                </button>
+
+                <div class="prank-result" id="prank-result">
+                    <p class="prank-text">Wkwkwk, iseng dikit 😆</p>
+                    <img src="assets/images/nakal.png" alt="Nakal" class="prank-img">
+                </div>
+            </div>
         </div>
 
         <footer>
-            <p id="text-footer">Made with ❤️ by Ridho</p>
+            <p id="text-footer">Made with 😡 by Ridho</p>
         </footer>
     </section>
 
@@ -1033,7 +1099,7 @@
         }
 
         /* --------------------------------------------------------------------------
-           3. Envelope Toggle Logic
+           3. Envelope Toggle Logic & Flower Explosion Effect
            -------------------------------------------------------------------------- */
         function toggleEnvelope() {
             const scene = document.getElementById('envelope-scene');
@@ -1041,8 +1107,44 @@
             scene.classList.toggle('open');
             if (scene.classList.contains('open')) {
                 if (hint) { hint.style.opacity = '0'; hint.style.pointerEvents = 'none'; }
+                triggerEnvelopeFlowers();
             } else {
                 if (hint) { hint.style.opacity = '1'; hint.style.pointerEvents = 'auto'; }
+            }
+        }
+
+        function triggerEnvelopeFlowers() {
+            if (typeof confetti === 'function') {
+                const rect = document.getElementById('envelope-scene').getBoundingClientRect();
+                const x = (rect.left + rect.width / 2) / window.innerWidth;
+                const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+                // Burst 1: Kelopak Bunga Pink & Soft Rose
+                confetti({
+                    particleCount: 50,
+                    spread: 80,
+                    startVelocity: 35,
+                    origin: { x: x, y: y },
+                    colors: ['#F472B6', '#FFB6C1', '#FFE4EC', '#F9A8D4', '#FFFFFF'],
+                    shapes: ['circle'],
+                    scalar: 1.2,
+                    disableForReducedMotion: true
+                });
+
+                // Burst 2 (delay sedikit): Kelopak Melayang Perlahan
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 30,
+                        angle: 90,
+                        spread: 100,
+                        startVelocity: 25,
+                        origin: { x: x, y: y },
+                        colors: ['#F472B6', '#FFB6C1', '#FCD34D'],
+                        shapes: ['circle'],
+                        scalar: 1,
+                        ticks: 200
+                    });
+                }, 200);
             }
         }
 
@@ -1190,6 +1292,45 @@
         }
 
         animatePetals();
+        /* --------------------------------------------------------------------------
+           6. Prank Button Dodge & Reveal Logic
+           -------------------------------------------------------------------------- */
+        let prankClickCount = 0;
+
+        function handlePrankClick() {
+            const btn = document.getElementById('prank-btn');
+            const result = document.getElementById('prank-result');
+
+            if (prankClickCount < 3) {
+                prankClickCount++;
+                
+                // Random Offset Positions (2-3 kali berpindah)
+                const offsetX = (Math.random() - 0.5) * 160; 
+                const offsetY = (Math.random() - 0.5) * 80;
+
+                btn.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.95)`;
+
+                if (prankClickCount === 3) {
+                    // Kembalikan posisi awal saat klik ke-3 sudah bisa dibuka
+                    setTimeout(() => {
+                        btn.style.transform = 'translate(0, 0) scale(1)';
+                    }, 300);
+                }
+            } else {
+                // Klik setelah berpindah posisi 3x -> Tampilkan hasil prank
+                btn.style.display = 'none';
+                result.classList.add('active');
+                
+                // Picu efek confetti humor
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 40,
+                        spread: 60,
+                        origin: { y: 0.8 }
+                    });
+                }
+            }
+        }
     </script>
 </body>
 
