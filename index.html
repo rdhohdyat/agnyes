@@ -857,6 +857,217 @@
             }
         }
 
+        /* ==========================================================================
+           Birthday Cake / Candle Blowing Section
+           ========================================================================== */
+        #birthday-section {
+            text-align: center;
+            background: radial-gradient(ellipse at center, #FFF0F8 0%, #FFF8F0 80%);
+        }
+
+        .birthday-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 32px;
+            flex-wrap: nowrap;
+        }
+
+        /* ---- Cake Side ---- */
+        .cake-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cake-hint {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+            letter-spacing: 0.3px;
+            max-width: 200px;
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .cake-svg-wrap {
+            position: relative;
+            width: 200px;
+            height: 220px;
+        }
+
+        /* Candle flame */
+        .candle-flame {
+            transform-box: fill-box;
+            transform-origin: bottom center;
+            animation: flameWiggle 1.5s ease-in-out infinite alternate;
+        }
+
+        .candle-flame.candle-2 {
+            animation-delay: 0.3s;
+        }
+
+        .candle-flame.candle-3 {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes flameWiggle {
+            0% {
+                transform: rotate(-3deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(3deg) scale(1.05, 0.95);
+            }
+
+            100% {
+                transform: rotate(-2deg) scale(0.95, 1.05);
+            }
+        }
+
+        /* Wind effect particles */
+        .wind-particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            z-index: 9999;
+            animation: windBlast 0.7s ease-out forwards;
+        }
+
+        @keyframes windBlast {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translate(var(--vx), var(--vy)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Smoke puff after blow */
+        .smoke-puff {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(180, 180, 180, 0.6) 0%, rgba(180, 180, 180, 0) 70%);
+            pointer-events: none;
+            animation: smokeFade 1.2s ease-out forwards;
+        }
+
+        @keyframes smokeFade {
+            0% {
+                transform: scale(0.3) translateY(0);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(2) translateY(-30px);
+                opacity: 0;
+            }
+        }
+
+        /* All blown message */
+        .all-blown-msg {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #7A4040;
+            margin-top: 8px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .all-blown-msg.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- GIF Side ---- */
+        .gif-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mochi-blow-gif {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mochi-blow-gif:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 36px rgba(216, 167, 167, 0.4);
+        }
+
+        .mochi-blow-gif:active {
+            transform: scale(0.92);
+        }
+
+        .mochi-blow-gif.blowing-active {
+            animation: mochiBlowAction 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes mochiBlowAction {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            20% {
+                transform: scale(1.18) rotate(-8deg) translateY(-6px);
+            }
+
+            40% {
+                transform: scale(0.92) rotate(6deg) translateY(4px);
+            }
+
+            60% {
+                transform: scale(1.08) rotate(-3deg);
+            }
+
+            80% {
+                transform: scale(0.98) rotate(1deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .mochi-blow-gif.disabled {
+            cursor: default;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .gif-click-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            max-width: 160px;
+        }
+
+        .candles-counter {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--primary-pink-hover);
+            margin-top: 4px;
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 480px) {
             .hero-title {
@@ -873,6 +1084,11 @@
 
             .story-card {
                 padding: 30px 20px;
+            }
+
+            .birthday-layout {
+                flex-direction: column;
+                gap: 24px;
             }
         }
     </style>
@@ -1037,6 +1253,128 @@
     </section>
 
     <!-- ==========================================================================
+       Section Ulang Tahun: Tiup Lilin Interaktif
+       ========================================================================== -->
+    <section id="birthday-section">
+        <div class="container reveal">
+            <h2 class="section-title">Tiup Lilinnya, Agnes! 🎂</h2>
+            <p class="section-subtitle" style="margin-top: 12px; margin-bottom: 6px; color: var(--text-muted); font-size: 0.95rem; font-style: italic; text-align: center;">Klik si mochi untuk tiup lilinnya! 💨</p>
+            <p class="candles-counter" id="candles-counter" style="margin-bottom: 24px; text-align: center;">🕯️ 3 lilin menyala</p>
+
+            <div class="birthday-layout">
+                <!-- KIRI: Kue Ulang Tahun -->
+                <div class="cake-side">
+                    <svg class="cake-svg-wrap" id="birthday-cake-svg" viewBox="0 0 200 220" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+
+                        <!-- ============ LILIN 1 (kiri, x=55..69, y=60..90) ============ -->
+                        <g id="candle-group-1">
+                            <!-- api lilin (persis menyentuh ujung lilin di y=60) -->
+                            <g id="flame-1" class="candle-flame candle-1">
+                                <path d="M 62 60 C 56 55, 57 48, 62 42 C 67 48, 68 55, 62 60 Z" fill="#FCD34D" />
+                                <path d="M 62 58 C 58 54, 59 49, 62 45 C 65 49, 66 54, 62 58 Z" fill="#FBBF24" />
+                                <path d="M 62 57 C 60 54, 60 51, 62 48 C 64 51, 64 54, 62 57 Z" fill="#F97316" />
+                            </g>
+                            <!-- sumbu lilin -->
+                            <line x1="62" y1="60" x2="62" y2="56" stroke="#5C4033" stroke-width="2"
+                                stroke-linecap="round" />
+                            <!-- batang lilin -->
+                            <rect x="55" y="60" width="14" height="30" rx="3" fill="#F9A8D4" />
+                            <!-- label lilin -->
+                            <rect x="56" y="67" width="12" height="4" rx="1" fill="rgba(255,255,255,0.4)" />
+                            <!-- bara (hidden, tampil setelah ditiup) -->
+                            <circle id="ember-1" cx="62" cy="58" r="2.5" fill="#F97316" opacity="0" />
+                        </g>
+
+                        <!-- ============ LILIN 2 (tengah, x=93..107, y=50..90) ============ -->
+                        <g id="candle-group-2">
+                            <!-- api lilin (persis menyentuh ujung lilin di y=50) -->
+                            <g id="flame-2" class="candle-flame candle-2">
+                                <path d="M 100 50 C 94 45, 95 38, 100 32 C 105 38, 106 45, 100 50 Z" fill="#FCD34D" />
+                                <path d="M 100 48 C 96 44, 97 39, 100 35 C 103 39, 104 44, 100 48 Z" fill="#FBBF24" />
+                                <path d="M 100 47 C 98 44, 98 41, 100 38 C 102 41, 102 44, 100 47 Z" fill="#F97316" />
+                            </g>
+                            <!-- sumbu lilin -->
+                            <line x1="100" y1="50" x2="100" y2="46" stroke="#5C4033" stroke-width="2"
+                                stroke-linecap="round" />
+                            <!-- batang lilin -->
+                            <rect x="93" y="50" width="14" height="40" rx="3" fill="#A5F3FC" />
+                            <rect x="94" y="57" width="12" height="4" rx="1" fill="rgba(255,255,255,0.4)" />
+                            <circle id="ember-2" cx="100" cy="48" r="2.5" fill="#F97316" opacity="0" />
+                        </g>
+
+                        <!-- ============ LILIN 3 (kanan, x=131..145, y=60..90) ============ -->
+                        <g id="candle-group-3">
+                            <!-- api lilin (persis menyentuh ujung lilin di y=60) -->
+                            <g id="flame-3" class="candle-flame candle-3">
+                                <path d="M 138 60 C 132 55, 133 48, 138 42 C 143 48, 144 55, 138 60 Z" fill="#FCD34D" />
+                                <path d="M 138 58 C 134 54, 135 49, 138 45 C 141 49, 142 54, 138 58 Z" fill="#FBBF24" />
+                                <path d="M 138 57 C 136 54, 136 51, 138 48 C 140 51, 140 54, 138 57 Z" fill="#F97316" />
+                            </g>
+                            <!-- sumbu lilin -->
+                            <line x1="138" y1="60" x2="138" y2="56" stroke="#5C4033" stroke-width="2"
+                                stroke-linecap="round" />
+                            <!-- batang lilin -->
+                            <rect x="131" y="60" width="14" height="30" rx="3" fill="#86EFAC" />
+                            <rect x="132" y="67" width="12" height="4" rx="1" fill="rgba(255,255,255,0.4)" />
+                            <circle id="ember-3" cx="138" cy="58" r="2.5" fill="#F97316" opacity="0" />
+                        </g>
+
+                        <!-- ============ KRIM ATAS KUE ============ -->
+                        <!-- lapisan icing putih bergelombang -->
+                        <path
+                            d="M28 95 Q40 80 55 90 Q70 100 85 85 Q100 70 115 85 Q130 100 145 85 Q160 70 175 90 Q185 98 170 100 L28 100 Z"
+                            fill="#FFFDF8" />
+                        <!-- garis pink tipis di atas krim -->
+                        <path d="M28 100 Q55 90 85 100 Q115 110 145 100 Q160 93 170 100" stroke="#F9A8D4"
+                            stroke-width="1.5" fill="none" stroke-dasharray="4 3" />
+
+                        <!-- ============ LAYER KUE ATAS ============ -->
+                        <!-- layer atas: merah muda -->
+                        <rect x="28" y="100" width="142" height="40" rx="6" fill="#FBCFE8" />
+                        <!-- dekorasi polka-dot -->
+                        <circle cx="50" cy="118" r="4" fill="rgba(255,255,255,0.55)" />
+                        <circle cx="75" cy="112" r="3" fill="rgba(255,255,255,0.45)" />
+                        <circle cx="100" cy="120" r="5" fill="rgba(255,255,255,0.55)" />
+                        <circle cx="128" cy="112" r="3" fill="rgba(255,255,255,0.4)" />
+                        <circle cx="152" cy="118" r="4" fill="rgba(255,255,255,0.5)" />
+                        <!-- garis sisi layer atas -->
+                        <rect x="28" y="136" width="142" height="4" rx="2" fill="#F9A8D4" />
+
+                        <!-- ============ LAYER KUE BAWAH ============ -->
+                        <!-- layer bawah: krem lebih tebal -->
+                        <rect x="18" y="140" width="162" height="55" rx="8" fill="#FDE68A" />
+                        <!-- hiasan pita -->
+                        <rect x="85" y="140" width="28" height="55" fill="rgba(249,168,212,0.35)" />
+                        <!-- dekorasi bintang kecil -->
+                        <text x="42" y="175" font-size="12" fill="rgba(255,255,255,0.6)">★</text>
+                        <text x="135" y="172" font-size="10" fill="rgba(255,255,255,0.5)">✦</text>
+                        <text x="60" y="162" font-size="8" fill="rgba(255,255,255,0.4)">●</text>
+                        <text x="148" y="165" font-size="8" fill="rgba(255,255,255,0.4)">●</text>
+                        <!-- garis sisi layer bawah -->
+                        <rect x="18" y="191" width="162" height="4" rx="2" fill="#F59E0B" />
+
+                        <!-- ============ ALAS KUE ============ -->
+                        <rect x="10" y="195" width="178" height="14" rx="7" fill="#E8D5B7" />
+                        <!-- shadow alas -->
+                        <ellipse cx="99" cy="212" rx="80" ry="6" fill="rgba(180,140,100,0.15)" />
+
+                    </svg>
+
+                    <p class="all-blown-msg" id="all-blown-msg">🎉 Semua lilin padam! Selamat Ulang Tahun! 🎂</p>
+                </div>
+
+                <!-- KANAN: GIF Mochi Tiup Lilin -->
+                <div class="gif-side">
+                    <img src="assets/gif/mochi-hallo.gif" alt="Mochi Tiup Lilin" class="mochi-blow-gif" style="margin-bottom: 34px;"
+                        id="mochi-blow-gif" onclick="blowCandle()">
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
        Section Terakhir: Closing & Confetti
        ========================================================================== -->
     <section id="final-section">
@@ -1050,7 +1388,7 @@
             <!-- Prank Gift Section -->
             <div class="prank-wrapper" id="prank-wrapper">
                 <p class="prank-title">Masih ada hadiah terakhir...</p>
-                <button class="btn-primary prank-btn" id="prank-btn" onclick="handlePrankClick()">
+                <button class="btn-primary prank-btn" id="prank-btn" onmouseenter="handlePrankDodge()" onclick="handlePrankClick()">
                     🎁 Klik untuk membuka
                 </button>
 
@@ -1306,35 +1644,221 @@
 
         animatePetals();
         /* --------------------------------------------------------------------------
+           7. Birthday Candle Blowing Logic
+           -------------------------------------------------------------------------- */
+        let candlesLeft = 3;
+        const candleOrder = [2, 1, 3]; // urutan lilin padam: tengah, kiri, kanan
+        let candleBlownIndex = 0;
+
+        function blowCandle() {
+            if (candlesLeft <= 0) return;
+
+            const gif = document.getElementById('mochi-blow-gif');
+            const counter = document.getElementById('candles-counter');
+
+            // Tentukan lilin mana yang akan dipadamkan
+            const candleNum = candleOrder[candleBlownIndex];
+            candleBlownIndex++;
+
+            // Trigger efek angin dari posisi GIF menuju kue
+            triggerWindEffect(gif);
+
+            // Reload GIF src to restart animation cycle from frame 1 on click
+            const currentSrc = gif.src.split('?')[0];
+            gif.src = currentSrc + '?t=' + new Date().getTime();
+
+            // Tambahkan class animasi gerakan tiup Mochi
+            gif.classList.remove('blowing-active');
+            void gif.offsetWidth; // trigger reflow
+            gif.classList.add('blowing-active');
+
+            // Sedikit delay sebelum api padam (efek wind travel)
+            setTimeout(() => {
+                extinguishCandle(candleNum);
+                candlesLeft--;
+
+                // Update counter text
+                if (candlesLeft === 0) {
+                    counter.textContent = 'Semua lilin sudah padam!';
+                    gif.classList.add('disabled');
+                    // Tampilkan pesan
+                    setTimeout(() => {
+                        document.getElementById('all-blown-msg').classList.add('visible');
+                    }, 400);
+                    // Tembakkan confetti meriah
+                    setTimeout(() => { triggerBirthdayConfetti(); }, 700);
+                } else if (candlesLeft === 1) {
+                    counter.textContent = '🕯️ 1 lilin menyala';
+                } else {
+                    counter.textContent = `🕯️ ${candlesLeft} lilin menyala`;
+                }
+            }, 400);
+        }
+
+        function extinguishCandle(num) {
+            const flame = document.getElementById(`flame-${num}`);
+            const ember = document.getElementById(`ember-${num}`);
+            const svgEl = document.getElementById('birthday-cake-svg');
+
+            if (!flame) return;
+
+            // Animasi api mengecil lalu hilang
+            flame.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+            flame.style.transformOrigin = 'bottom center';
+            flame.style.opacity = '0';
+            flame.style.transform += ' scaleY(0)';
+
+            // Tampilkan asap setelah api padam
+            setTimeout(() => {
+                flame.style.display = 'none';
+                if (ember) {
+                    ember.style.opacity = '0.7';
+                    setTimeout(() => { ember.style.opacity = '0'; }, 1200);
+                }
+                // Buat elemen asap di posisi lilin
+                spawnSmoke(num);
+            }, 350);
+        }
+
+        function spawnSmoke(candleNum) {
+            // posisi asap relatif terhadap SVG wrapper
+            const positions = { 1: { x: 62, pct: 0.31 }, 2: { x: 100, pct: 0.50 }, 3: { x: 138, pct: 0.69 } };
+            const pos = positions[candleNum];
+            if (!pos) return;
+
+            const svgWrap = document.getElementById('birthday-cake-svg');
+            const rect = svgWrap.getBoundingClientRect();
+
+            // Buat div asap absolute di atas elemen kue (dalam flow document)
+            const parentPos = svgWrap.parentElement.getBoundingClientRect();
+            const smokeWrap = svgWrap.parentElement;
+            smokeWrap.style.position = 'relative';
+
+            for (let i = 0; i < 3; i++) {
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-puff';
+                const size = 18 + i * 10;
+                smoke.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: calc(${pos.pct * 100}% - ${size / 2}px);
+                    top: 10px;
+                    animation-delay: ${i * 0.15}s;
+                `;
+                smokeWrap.appendChild(smoke);
+                setTimeout(() => smoke.remove(), 1500 + i * 150);
+            }
+        }
+
+        function triggerWindEffect(originEl) {
+            const rect = originEl.getBoundingClientRect();
+            const originX = rect.left + rect.width / 2;
+            const originY = rect.top + rect.height / 2;
+
+            const colors = [
+                'rgba(255,255,255,0.85)',
+                'rgba(173,216,230,0.7)',
+                'rgba(200,220,255,0.6)',
+                'rgba(255,240,245,0.8)'
+            ];
+
+            // Arah angin: dari Mochi (kanan) ke Kue (kiri)
+            for (let i = 0; i < 22; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'wind-particle';
+                    const size = Math.random() * 8 + 4;
+                    const vx = -(Math.random() * 180 + 80);  // meluncur ke arah kiri (kue)
+                    const vy = (Math.random() - 0.5) * 80;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+
+                    particle.style.cssText = `
+                        left: ${originX + (Math.random() - 0.5) * 30}px;
+                        top: ${originY + (Math.random() - 0.5) * 30}px;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: ${color};
+                        --vx: ${vx}px;
+                        --vy: ${vy}px;
+                        animation-duration: ${0.4 + Math.random() * 0.4}s;
+                        animation-delay: ${Math.random() * 0.15}s;
+                    `;
+                    document.body.appendChild(particle);
+                    setTimeout(() => particle.remove(), 900);
+                }, i * 18);
+            }
+        }
+
+        function triggerBirthdayConfetti() {
+            if (typeof confetti !== 'function') return;
+
+            const colors = ['#F472B6', '#FCD34D', '#86EFAC', '#A5F3FC', '#FFFFFF', '#FBCFE8', '#FDE68A'];
+
+            // Burst kiri
+            confetti({
+                particleCount: 70,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0.1, y: 0.7 },
+                colors,
+                disableForReducedMotion: true
+            });
+            // Burst kanan
+            setTimeout(() => {
+                confetti({
+                    particleCount: 70,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 0.9, y: 0.7 },
+                    colors,
+                    disableForReducedMotion: true
+                });
+            }, 150);
+            // Burst tengah atas
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    angle: 90,
+                    spread: 80,
+                    origin: { x: 0.5, y: 0.5 },
+                    colors,
+                    scalar: 1.3,
+                    disableForReducedMotion: true
+                });
+            }, 350);
+        }
+
+        /* --------------------------------------------------------------------------
            6. Prank Button Dodge & Reveal Logic
            -------------------------------------------------------------------------- */
-        let prankClickCount = 0;
+        let prankDodgeCount = 0;
+
+        function handlePrankDodge() {
+            const btn = document.getElementById('prank-btn');
+            if (prankDodgeCount < 3) {
+                prankDodgeCount++;
+                const offsetX = (Math.random() - 0.5) * 220;
+                const offsetY = (Math.random() - 0.5) * 100;
+                btn.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.95)`;
+
+                if (prankDodgeCount === 3) {
+                    setTimeout(() => {
+                        btn.style.transform = 'translate(0, 0) scale(1)';
+                    }, 400);
+                }
+            }
+        }
 
         function handlePrankClick() {
             const btn = document.getElementById('prank-btn');
             const result = document.getElementById('prank-result');
 
-            if (prankClickCount < 3) {
-                prankClickCount++;
-
-                // Random Offset Positions (2-3 kali berpindah)
-                const offsetX = (Math.random() - 0.5) * 160;
-                const offsetY = (Math.random() - 0.5) * 80;
-
-                btn.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.95)`;
-
-                if (prankClickCount === 3) {
-                    // Kembalikan posisi awal saat klik ke-3 sudah bisa dibuka
-                    setTimeout(() => {
-                        btn.style.transform = 'translate(0, 0) scale(1)';
-                    }, 300);
-                }
+            if (prankDodgeCount < 3) {
+                handlePrankDodge();
             } else {
-                // Klik setelah berpindah posisi 3x -> Tampilkan hasil prank
                 btn.style.display = 'none';
                 result.classList.add('active');
 
-                // Picu efek confetti humor
                 if (typeof confetti === 'function') {
                     confetti({
                         particleCount: 40,
